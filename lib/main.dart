@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/ui/application.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,13 +7,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final class Logger extends ProviderObserver {
   @override
   void didAddProvider(ProviderObserverContext context, Object? value) {
-    print("Add Provider: ${context.provider}");
+    log("Add Provider: ${context.provider}");
     super.didAddProvider(context, value);
   }
 
   @override
   void didDisposeProvider(ProviderObserverContext context) {
-    print("Dispose Provider: ${context.provider}");
+    log("Dispose Provider: ${context.provider}");
     super.didDisposeProvider(context);
   }
 

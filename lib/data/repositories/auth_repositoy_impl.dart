@@ -1,8 +1,9 @@
+import 'package:flutter_app/data/services/auth/auth_service.dart';
 import 'package:flutter_app/domain/models/user_profile_model.dart';
 import 'package:flutter_app/domain/repositories/auth_repositoy.dart';
 
 class AuthRepositoyImpl extends AuthRepository {
-  AuthRepositoyImpl(super.authService);
+  AuthRepositoyImpl();
 
   @override
   UserProfile? build() {
@@ -17,14 +18,14 @@ class AuthRepositoyImpl extends AuthRepository {
 
   @override
   Future<bool> login() async {
-    final result = UserProfile.fromMap(await authService.login());
+    final result = UserProfile.fromMap(await ref.read(authService).login());
     state = result;
     return Future.value(result.name.isNotEmpty);
   }
 
   @override
   Future<bool> logout() async {
-    bool result = await authService.logout();
+    bool result = await ref.read(authService).logout();
     state = const UserProfile();
     return Future.value(result);
   }
