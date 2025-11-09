@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/ui/login/view_models/login_view_model.dart';
+import 'package:flutter_app/ui/core/view_models/auth_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -41,7 +41,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   }
 
   void _login() async {
-    final result = await ref.read(loginViewModel.notifier).login();
+    final result = await ref.read(authViewModel.notifier).login();
     if (result && mounted) {
       GoRouter.of(context).go("/");
     }

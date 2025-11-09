@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/ui/home/view_models/home_view_model.dart';
+import 'package:flutter_app/ui/core/view_models/auth_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,7 +13,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final viewData = ref.watch(homeViewModel);
+    final viewData = ref.watch(authViewModel);
 
     return Scaffold(
       appBar: AppBar(
@@ -45,7 +45,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   }
 
   void _logout() async {
-    final result = await ref.read(homeViewModel.notifier).logout();
+    final result = await ref.read(authViewModel.notifier).logout();
     if (result && mounted) {
       GoRouter.of(context).go("/");
     }

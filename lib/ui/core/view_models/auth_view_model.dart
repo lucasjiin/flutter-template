@@ -2,7 +2,7 @@ import 'package:flutter_app/domain/models/user_profile_model.dart';
 import 'package:flutter_app/domain/repositories/auth_repositoy.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoginViewModel extends Notifier<UserProfile> {
+class AuthViewModel extends Notifier<UserProfile> {
   @override
   UserProfile build() {
     final userProfile = ref.watch(authRepository) ?? UserProfile();
@@ -19,6 +19,10 @@ class LoginViewModel extends Notifier<UserProfile> {
   Future<bool> login() {
     return ref.read(authRepository.notifier).login();
   }
+
+  Future<bool> logout() {
+    return ref.read(authRepository.notifier).logout();
+  }
 }
 
-final loginViewModel = NotifierProvider.autoDispose<LoginViewModel, UserProfile>(LoginViewModel.new);
+final authViewModel = NotifierProvider.autoDispose<AuthViewModel, UserProfile>(AuthViewModel.new);

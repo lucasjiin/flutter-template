@@ -1,4 +1,4 @@
-import 'package:flutter_app/core/type.dart';
+import 'package:flutter_app/core/utils/type.dart';
 import 'package:flutter_app/data/services/auth/auth_service.dart';
 
 class AuthServiceImpl implements Authservice {
